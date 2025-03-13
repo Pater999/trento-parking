@@ -19,7 +19,7 @@
 		"lint": "biome lint --write",
 		"lint:check": "biome lint",
 		"prepare": "lefthook install",
-		"ci:publish": "pnpm publish -r",
+		"ci:publish": "pnpm run build && pnpm publish -r",
 		"changeset": "changeset"
 	},
 	"devDependencies": {
