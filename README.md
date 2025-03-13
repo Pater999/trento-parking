@@ -63,7 +63,7 @@ The main class for interacting with parking data.
 - `refresh()`: Fetches the latest parking data
 - `all()`: Returns all parking locations
 - `byId(id: number)`: Returns a specific parking location by ID
-- `byType(type: string)`: Returns parking locations filtered by type
+- `byType(type: ParkingType)`: Returns parking locations filtered by type
 - `getAvailable()`: Returns parking locations with available spots
 - `getFull()`: Returns parking locations that are at capacity
 - `getLastRefresh()`: Returns the timestamp of the last data refresh
