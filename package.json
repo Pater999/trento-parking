@@ -1,6 +1,6 @@
 {
 	"name": "trento-parking",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A TypeScript library providing easy access to parking and bike slot availability, location, and details in Trento, Italy. Fetches data from the official Comune di Trento parking services.",
 	"types": "lib/index.d.ts",
 	"main": "lib/index.js",
