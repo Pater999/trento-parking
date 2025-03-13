@@ -1,6 +1,6 @@
 import axios, { type AxiosInstance, type AxiosResponse } from "axios";
 
-import { ParkingData } from "../models";
+import { ParkingData, type ParkingType } from "../models";
 
 class ParkingDataCollection {
 	private axiosInstance: AxiosInstance;
@@ -35,7 +35,7 @@ class ParkingDataCollection {
 		return this.parkingData.find((parking) => parking.id === id) ?? null;
 	}
 
-	byType(type: string): ParkingData[] {
+	byType(type: ParkingType): ParkingData[] {
 		return this.parkingData.filter((parking) => parking.type === type);
 	}
 

@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+import { ParkingType } from "../../models";
 import { parkingData } from "../__mocks__/parking-data";
 import ParkingDataCollection from "./../../services/parking-service";
 
@@ -48,10 +49,10 @@ describe("ParkingDataCollection", () => {
 
 	it("should return parking data by type", async () => {
 		await parkingCollection.refresh();
-		const parkingsByType = parkingCollection.byType("park");
+		const parkingsByType = parkingCollection.byType(ParkingType.PARK);
 		expect(parkingsByType).toBeDefined();
 		expect(parkingsByType.length).toBe(
-			parkingData.filter((p) => p.type === "park").length,
+			parkingData.filter((p) => p.type === ParkingType.PARK).length,
 		);
 	});
 

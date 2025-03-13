@@ -1,12 +1,13 @@
 import type { Distance } from "./distance";
 import type { OpeningHours } from "./opening-hours";
+import type { ParkingType } from "./parking-types";
 
 export class ParkingData {
 	id!: number;
 	driver!: string;
 	geom!: string;
 	name!: string;
-	type!: string;
+	type!: ParkingType;
 	city!: string;
 	color!: string | null;
 	capacity!: number;
