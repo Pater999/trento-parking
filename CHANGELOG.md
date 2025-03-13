@@ -1,5 +1,11 @@
 # trento-parking
 
+## 1.1.0
+
+### Minor Changes
+
+- 95fdf78: Use ParkingType enum for typesafety
+
 ## 1.0.1
 
 ### Patch Changes
