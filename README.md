@@ -1,5 +1,7 @@
 # Trento Parking
 
+[![Npm version](https://img.shields.io/npm/v/trento-parking)](https://www.npmjs.com/package/trento-parking) [![install size](https://packagephobia.com/badge?p=trento-parking)](https://www.npmjs.com/package/trento-parking)  [![Support version](https://img.shields.io/node/v-lts/trento-parking)](https://github.com/Pater999/trento-parking) [![GitHub top language](https://img.shields.io/github/languages/top/pater999/trento-parking?style=flat-square&logo=github)](https://github.com/Pater999/trento-parking)  [![GitHub license](https://img.shields.io/github/license/pater999/trento-parking)](https://github.com/Pater999/trento-parking/blob/master/LICENSE)  [![GitHub issues](https://img.shields.io/github/issues/pater999/trento-parking)](https://github.com/Pater999/trento-parking/issues)  [![GitHub Workflow Status](https://github.com/pater999/trento-parking/actions/workflows/changesets.yml/badge.svg)](https://github.com/Pater999/trento-parking) [![Github last commit](https://img.shields.io/github/last-commit/pater999/trento-parking)](https://github.com/Pater999/trento-parking/commits/master/)
+
 A TypeScript library providing easy access to parking and bike slot availability, location, and details in Trento, Italy. This library fetches real-time data from the official Comune di Trento parking services.
 
 ## Features
