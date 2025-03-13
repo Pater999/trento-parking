@@ -1,30 +1,48 @@
 {
-	"name": "node-boilerplate",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"name": "trento-parking",
+	"version": "0.0.0",
+	"description": "A TypeScript library providing easy access to parking and bike slot availability, location, and details in Trento, Italy. Fetches data from the official Comune di Trento parking services.",
+	"types": "lib/index.d.ts",
+	"main": "lib/index.js",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:Pater999/trento-parking.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Pater999/trento-parking/issues"
+	},
 	"scripts": {
-		"start": "node dist/index.js",
-		"dev": "tsx src/index.ts",
 		"type-check": "tsc --noEmit",
-		"build": "tsc --project tsconfig.build.json",
+		"build": "tsup",
 		"test": "vitest run",
 		"format": "biome format --write",
 		"lint": "biome lint --write",
 		"lint:check": "biome lint",
-		"prepare": "lefthook install"
+		"prepare": "lefthook install",
+		"ci:publish": "pnpm publish -r",
+		"changeset": "changeset"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
+		"@changesets/cli": "^2.28.1",
 		"@types/node": "^22.13.1",
 		"lefthook": "^1.10.10",
-		"tsx": "^4.19.2",
+		"tsup": "^8.4.0",
 		"typescript": "^5.7.3",
 		"vitest": "^3.0.5"
 	},
 	"packageManager": "pnpm@10.2.0",
 	"engines": {
-		"node": ">=22",
-		"pnpm": ">=10"
-	}
+		"node": ">=18"
+	},
+	"dependencies": {
+		"axios": "^1.8.3"
+	},
+	"keywords": [
+		"trento",
+		"parking",
+		"bikes",
+		"parking slots availability",
+		"real time api"
+	]
 }

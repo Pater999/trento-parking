@@ -1,99 +1,122 @@
-# Node.js TypeScript Boilerplate
+# Trento Parking
 
-This repository provides a solid foundation for building Node.js applications with TypeScript, incorporating best practices and essential tools for modern development. It's designed to get you started quickly with a well-structured project and a robust development workflow.
+A TypeScript library providing easy access to parking and bike slot availability, location, and details in Trento, Italy. This library fetches real-time data from the official Comune di Trento parking services.
 
 ## Features
 
-* **TypeScript:** Static typing for enhanced code quality and maintainability.
-* **Vitest:** A fast and easy-to-use unit testing framework.
-* **Biome.js:** A fast and opinionated linter and formatter.
-* **Pre-commit Hooks (Lefthook):** Automate code checks before each commit to ensure code quality.
-* **Docker:** Containerization for easy deployment and consistent environments (using Docker Compose).
-* **GitHub Actions CI:** Automated testing and linting on every push and pull request.
+- Real-time parking availability data
+- Bike slot information
+- Parking location details
+- Distance calculations between parking locations
+- Filtering capabilities (by type, availability, etc.)
+- TypeScript support with full type definitions
 
-## Getting Started
+## Installation
 
-### Prerequisites
-
-* [Node.js](https://nodejs.org/) (>=22, LTS version recommended)
-* [pnpm](https://pnpm.io/) (>=10, Recommended package manager)
-* [Docker](https://www.docker.com/)
-* [Docker Compose](https://docs.docker.com/compose/install/)
-
-### Installation
-
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/Pater999/node-boilerplate.git
-    ```
-
-2. Navigate to the project directory:
-    ```bash
-    cd node-boilerplate
-    ```
-
-3. Install dependencies:   
-
-    ```bash
-    pnpm install
-    ```
-
-### Development
-
-- Running the app in development mode
-
-    ```bash
-    pnpm run dev
-    ```
-
-- Running tests
-    ```bash
-    pnpm run test
-    ```
-
-- Running the linter and formatter
-    ```bash
-    pnpm run lint
-    ```
-
-- Building the Docker image
-    ```bash
-    docker build -t <your-image-name> .
-    ```
-
-- Running the Docker container with Docker Compose
-    ```bash
-    docker-compose up -d
-    ```
-
-### Project Structure
-
-```
-.
-├── .github/workflows/pull-request.yml   # GitHub Actions workflow
-├── node_modules/                      # Node modules (not in repo)
-├── src/                              # Source code
-│   └── index.ts                    # Main application file
-├── test/                             # Unit tests
-│   └── unit/                         # Unit test files
-│       ├── setup.ts                  # Test setup
-│       └── index.test.ts             # Example test file
-├── .gitignore                         # Files ignored by Git
-├── .npmrc                             # npm configuration
-├── .nvmrc                             # Node.js version specification
-├── biome.json                         # Biome configuration
-├── docker-compose.yml                 # Docker Compose configuration
-├── Dockerfile                         # Docker configuration
-├── lefthook.yml                       # Lefthook configuration
-├── package.json                       # Project configuration
-├── pnpm-lock.yaml                     # Lock file for dependencies
-├── README.md                          # This file
-├── tsconfig.build.json                # TypeScript build configuration
-├── tsconfig.json                      # TypeScript configuration
-├── vitest.config.mts                  # Vitest configuration
+```bash
+npm install trento-parking
+# or
+yarn add trento-parking
+# or
+pnpm add trento-parking
 ```
 
-### Contributing
+## Usage
 
-Contributions are welcome! Please open an issue or submit a pull request.
+```typescript
+import { ParkingDataCollection } from 'trento-parking';
+
+// Initialize the parking collection
+const parkingCollection = new ParkingDataCollection();
+
+// Refresh the data
+await parkingCollection.refresh();
+
+// Get all parking locations
+const allParkings = parkingCollection.all();
+
+// Get a specific parking by ID
+const parkingById = parkingCollection.byId(211);
+
+// Get available parking spots
+const availableParkings = parkingCollection.getAvailable();
+
+// Get full parking locations
+const fullParkings = parkingCollection.getFull();
+
+// Get parking locations by type
+const parkingsByType = parkingCollection.byType('park');
+
+// Get distances between parking locations
+const parkingWithDistances = parkingCollection.byId(211);
+const distances = parkingWithDistances?.getDistancesCompleted(parkingCollection.all());
+```
+
+## API Reference
+
+### ParkingDataCollection
+
+The main class for interacting with parking data.
+
+#### Methods
+
+- `refresh()`: Fetches the latest parking data
+- `all()`: Returns all parking locations
+- `byId(id: number)`: Returns a specific parking location by ID
+- `byType(type: string)`: Returns parking locations filtered by type
+- `getAvailable()`: Returns parking locations with available spots
+- `getFull()`: Returns parking locations that are at capacity
+- `getLastRefresh()`: Returns the timestamp of the last data refresh
+
+### Parking Data Model
+
+Each parking location includes:
+- `id`: Unique identifier
+- `name`: Parking location name
+- `type`: Type of parking facility
+- `capacity`: Total number of spots
+- `freeslots`: Number of available spots
+- `coordinates`: Location coordinates
+- `getDistances()`: Calculates distances to other parking locations
+
+## Requirements
+
+- Node.js >= 18
+- TypeScript (for TypeScript projects)
+
+## Development
+
+This project uses:
+- TypeScript for type safety
+- Vitest for testing
+- Biome for linting and formatting
+- Changesets for version management
+- tsup for building
+
+### Setup
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+3. Run tests:
+   ```bash
+   pnpm test
+   ```
+
+### Available Scripts
+
+- `pnpm build`: Build the library
+- `pnpm test`: Run tests
+- `pnpm format`: Format code
+- `pnpm lint`: Lint code
+- `pnpm type-check`: Check TypeScript types
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

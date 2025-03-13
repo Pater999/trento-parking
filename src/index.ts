@@ -1,5 +1,2 @@
-export function sum(a: number, b: number) {
-	return a + b;
-}
-
-console.log("HELLO");
+export { default as ParkingDataCollection } from "./services/parking-service";
+export * from "./models";
