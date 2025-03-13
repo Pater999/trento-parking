@@ -1,0 +1,9 @@
+services:
+  my-app:
+    build: . 
+    # ports:
+    #  - "3000:3000" # Example: Maps container port 3000 to host port 3000. Adjust as needed.
+    # If you need to set environment variables:
+    environment:
+       - NODE_ENV=production
+    restart: always # Optional: Restarts the container if it crashes
